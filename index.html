@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagomi触发器脚本仓库</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: #1a1f2e;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .info-bar {
+            background: rgba(30, 35, 48, 0.9);
+            border-radius: 12px;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(78, 192, 180, 0.3);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            white-space: nowrap;
+        }
+        
+        .title i {
+            color: #4ec0b4;
+            font-size: 1.3rem;
+        }
+        
+        .links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .link-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: rgba(78, 192, 180, 0.15);
+            border-radius: 8px;
+            text-decoration: none;
+            color: #e0f7fa;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(78, 192, 180, 0.2);
+            white-space: nowrap;
+        }
+        
+        .link-item:hover {
+            background: rgba(78, 192, 180, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(78, 192, 180, 0.2);
+        }
+        
+        .link-item i {
+            font-size: 1rem;
+        }
+        
+        .github-link {
+            background: rgba(36, 41, 46, 0.8);
+            border-color: rgba(240, 246, 252, 0.2);
+        }
+        
+        .github-link:hover {
+            background: rgba(36, 41, 46, 1);
+        }
+        
+        .trigger-link {
+            background: rgba(25, 118, 210, 0.2);
+            border-color: rgba(25, 118, 210, 0.3);
+        }
+        
+        .trigger-link:hover {
+            background: rgba(25, 118, 210, 0.3);
+            box-shadow: 0 5px 15px rgba(25, 118, 210, 0.2);
+        }
+        
+        .bilibili-link {
+            background: rgba(251, 114, 153, 0.15);
+            border-color: rgba(251, 114, 153, 0.3);
+        }
+        
+        .bilibili-link:hover {
+            background: rgba(251, 114, 153, 0.25);
+            box-shadow: 0 5px 15px rgba(251, 114, 153, 0.2);
+        }
+        
+        .bilibili-link i {
+            color: #ff8fab;
+        }
+        
+        .thanks {
+            color: #ffcc00;
+            font-style: italic;
+            white-space: nowrap;
+            padding-left: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .info-bar {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+            
+            .title {
+                font-size: 1rem;
+            }
+            
+            .links {
+                justify-content: center;
+            }
+            
+            .link-item {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .info-bar {
+                padding: 15px;
+                gap: 12px;
+            }
+            
+            .links {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+            
+            .link-item {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="info-bar">
+        <div class="title">
+            <i class="fas fa-code"></i>
+            <span>Nagomi的触发器脚本仓库</span>
+        </div>
+        
+        <div class="links">
+            <a href="https://github.com/eroubue/TRN" class="link-item github-link" target="_blank">
+                <i class="fab fa-github"></i>
+                <span>GitHub仓库</span>
+            </a>
+            
+            <a href="https://act.ask0.cc" class="link-item trigger-link" target="_blank">
+                <i class="fas fa-download"></i>
+                <span>获取触发器</span>
+            </a>
+            
+            <a href="https://space.bilibili.com/74131583" class="link-item bilibili-link" target="_blank">
+                <i class="fab fa-bilibili"></i>
+                <span>关注Nagomi</span>
+            </a>
+        </div>
+        
+     
+    </div>
+    
+    <script>
+        document.querySelectorAll('.link-item').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const infoBar = document.querySelector('.info-bar');
+            infoBar.style.opacity = '0';
+            infoBar.style.transform = 'translateY(20px)';
+            infoBar.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            
+            setTimeout(() => {
+                infoBar.style.opacity = '1';
+                infoBar.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
